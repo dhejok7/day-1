@@ -1,0 +1,119 @@
+Difference between HTTP/1.1 and HTTP/2
+--------------------------------------
+Binary Data Format:
+1. HTTP/1.1, messages are transmitted in plaintext which results in results in increased size due to unnecessary whitespace and inefficient compression.
+2. Where as HTTP/2 encapsulates data using a binary protocol.The benefit of a binary protocol is it allows for more compact, more easily compressible, and less error-prone transmissions.
+
+Connection Establishment:
+1. In HTTP/1, we had to establish connection between server and client for every request and response.
+2. One major problem was that connection needed to be established after each request. 
+3. To solve this problem HTTP 1.1 came up with a keep-alive concept which helped to send multiple requests over a single connection.
+4. To achieve the speed, HTTP1.1 had 6 TCP connections.
+5. Though HTTP/1.1 was much faster than HTTP/1, HTTP/2 came up with an advancement like multiple request can be given at once and server will give response respectively for all that multiple requests.
+6. To achieve this parallel request over a single HTTP connection, HTTP/2 uses the concept of streams. That is, each request being sent from the client has a unique stream id attached to the stream. This helps the client and server identify the request and response streams accordingly. 
+
+Header Compression and Reuse:
+1. In HTTP/1.1, headers are incompressible and repeated for each request.
+2. Hence, the size of duplicate header information increases.That is, same information is sent multiple times.
+3. HTTP/2 eliminates redundant headers and compresses the remaining headers to drastically decrease the amount of data repeated during a session.
+
+Server Push:
+1.Instead of waiting for clients to request resources, servers will push resources. This allows websites to send content to users before they request, minimizing the waiting time.
+
+----*----*----*----*----*----*----*----*----*----*----*----*----*
+
+Objects And Its Internal Representation In JavaScript
+-----------------------------------------------------
+Objects are important data types in javascript. 
+Objects are different than primitive datatypes (i.e. number, string, boolean, etc.). 
+Primitive data types contain one value but Objects can hold many values in form of Key: value pair. 
+These keys can be variables or functions and are called properties and methods, respectively, in the context of an object.
+
+Object Property
+
+* Properties are the values associated with a JavaScript object.
+
+Object Method
+
+* An object method is an object property containing a function definition.
+
+-.-.-.-.-.-.-.-
+The syntax for adding a property to an object is :
+	ObjectName.ObjectProperty = propertyValue;
+e.g. 
+var myCar = new Object();
+myCar.make = 'TATA';
+---------------------------------------------------------
+The value inside the object can be accessed using keys.
+i.e.
+myCar.make
+
+Output: 'TATA'
+
+These values can be accessed using brackets notation also.
+
+myCar[make]
+
+Output: 'TATA'
+-.-.-.-.-.-.-.-
+The syntax to access a property from an object is:
+
+objectName.property     (or)
+objectName["property”]  (or)   
+objectName[expression]   
+-------------------------------------------------------
+
+1. Creating JavaScript Object with object literal
+-------------------------------------------------
+Javascript object can be created using object literal, simply define the property : value inside curly braces.
+e.g.
+let bike = {name: 'SuperSport', maker:'Ducati', engine:'937cc'}
+
+2. Creating JavaScript Object with Constructor
+----------------------------------------------
+Constructor is a function and with the help of new keyword, constructor function allows to create multiple objects.
+
+e.g.
+function Vehicle(name, maker) {
+   this.name = name;
+   this.maker = maker;
+}
+let car1 = new Vehicle(’Fiesta’, 'Ford’);
+let car2 = new Vehicle(’Santa Fe’, 'Hyundai’)
+
+3. Using the JavaScript Keyword new 
+------------------------------------
+e.g.
+var person = new Object();
+person.firstName = “John”;
+person.lastName = “Doe”;
+person.age = 50;
+person.eyeColor = “blue”;
+
+4. Using the Object.create method 
+------------------------------------
+e.g.
+// Animal properties and method encapsulation
+var Animal = {
+  type: 'Invertebrates', // Default value of properties
+  displayType: function() {  // Method which will display type of Animal
+    console.log(this.type);
+  }
+};
+
+// Create new animal type called animal1 
+var animal1 = Object.create(Animal);
+animal1.displayType(); 
+// Output:Invertebrates
+
+// Create new animal type called Fishes
+var fish = Object.create(Animal);
+fish.type = 'Fishes';
+fish.displayType(); 
+// Output:Fishes
+
+
+
+
+
+
